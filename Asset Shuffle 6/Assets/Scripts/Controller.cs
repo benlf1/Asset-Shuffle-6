@@ -5,15 +5,20 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     private PlayerHost host;
+    public EnvironmentController environment;
+    public GameObject player;
 
     void Awake()
     {
-        host = GetComponent<PlayerHost>();
+        // host = GetComponent<PlayerHost>();
     }
 
     void FixedUpdate()
     {
-        host.movement.Move(host.body, GetMovementInput());
+        // host.movement.Move(host.body, GetMovementInput());
+        environment.Move(environment.gameObject.transform, GetMovementInput(), player.transform.position);
+        Debug.Log(player.transform.position);
+        // player.transform.position = new Vector3(0, 0, 0);
     }
 
     private Vector3 GetMovementInput()
